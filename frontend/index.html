@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MedSchedule Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+GLOBAL
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Poppins;
+background:linear-gradient(135deg,#667eea,#764ba2);
+min-height:100vh;
+overflow-x:hidden;
+color:white;
+transition:0.4s;
+}
+
+/* LIGHT MODE */
+.light-mode{
+background:#f5f5f5;
+color:#222;
+}
+
+.light-mode .card,
+.light-mode .feature-card,
+.light-mode .filter-box,
+.light-mode .stat-card,
+.light-mode .quote-box{
+background:white;
+color:#222;
+}
+
+.light-mode .testimonial-card{
+background:#fff;
+}
+
+/* BACKGROUND GLOW */
+
+.bg1,.bg2{
+position:fixed;
+border-radius:50%;
+filter:blur(100px);
+z-index:-1;
+}
+
+.bg1{
+width:350px;
+height:350px;
+background:#00c6ff;
+top:-100px;
+left:-100px;
+}
+
+.bg2{
+width:350px;
+height:350px;
+background:#ff4ecd;
+bottom:-100px;
+right:-100px;
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+#navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+z-index:1000;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+}
+
+.nav-container{
+display:flex;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+#themeBtn{
+padding:10px 15px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+background:white;
+}
+
+#nav{
+display:flex;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+padding-top:140px;
+padding-bottom:70px;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+gap:50px;
+padding-left:30px;
+padding-right:30px;
+}
+
+.hero-left{
+max-width:600px;
+}
+
+.hero-left h1{
+font-size:68px;
+line-height:1.1;
+margin-bottom:20px;
+font-weight:700;
+}
+
+.hero-left p{
+font-size:20px;
+opacity:0.9;
+line-height:1.7;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-bottom:30px;
+}
+
+.hero-buttons button{
+padding:14px 24px;
+border:none;
+border-radius:14px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn1{
+background:#00c6ff;
+color:white;
+}
+
+.btn2{
+background:white;
+color:#333;
+}
+
+.hero-buttons button:hover{
+transform:translateY(-4px) scale(1.03);
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.stat-card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+padding:20px;
+border-radius:20px;
+min-width:140px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+}
+
+.stat-card h2{
+font-size:34px;
+margin-bottom:8px;
+}
+
+/* HERO IMAGE */
+
+.hero-right{
+position:relative;
+}
+
+.hero-right img{
+width:420px;
+max-width:100%;
+border-radius:35px;
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* FLOATING CARDS */
+
+.floating-card{
+position:absolute;
+background:white;
+color:black;
+padding:15px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+font-size:14px;
+font-weight:600;
+}
+
+.card1{
+top:20px;
+left:-40px;
+}
+
+.card2{
+bottom:20px;
+right:-40px;
+}
+
+/* =========================
+EXTRA SECTION
+========================= */
+
+.extra-section{
+padding:80px 20px;
+text-align:center;
+}
+
+.extra-section h2{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.extra-sub{
+max-width:800px;
+margin:auto;
+opacity:0.9;
+font-size:18px;
+line-height:1.7;
+margin-bottom:50px;
+}
+
+/* FEATURES */
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+}
+
+.feature-card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+transition:0.4s;
+}
+
+.feature-card:hover{
+transform:translateY(-10px);
+}
+
+.icon{
+font-size:50px;
+margin-bottom:15px;
+}
+
+/* QUOTE */
+
+.quote-box{
+margin-top:70px;
+padding:50px 20px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(15px);
+border-radius:30px;
+max-width:1000px;
+margin-left:auto;
+margin-right:auto;
+}
+
+/* TESTIMONIALS */
+
+.testimonial-section{
+margin-top:80px;
+}
+
+.testimonial-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+margin-top:40px;
+}
+
+.testimonial-card{
+background:white;
+color:#333;
+padding:30px;
+border-radius:25px;
+}
+
+/* =========================
+FILTER
+========================= */
+
+.filter-section{
+padding:60px 20px;
+text-align:center;
+}
+
+.filter-box{
+max-width:500px;
+margin:auto;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:25px;
+}
+
+.filter-box h2{
+margin-bottom:20px;
+font-size:30px;
+}
+
+.filter-box select{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+font-size:16px;
+font-family:Poppins;
+outline:none;
+}
+
+/* =========================
+DOCTOR CARDS
+========================= */
+
+#doctorsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,320px));
+justify-content:center;
+gap:30px;
+padding:50px 20px;
+}
+
+.card{
+background:rgba(255,255,255,0.18);
+backdrop-filter:blur(20px);
+border-radius:28px;
+padding:18px;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+}
+
+.card img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:22px;
+}
+
+.card h3{
+margin-top:18px;
+font-size:26px;
+}
+
+.card p{
+margin-top:5px;
+opacity:0.9;
+}
+
+/* INPUTS */
+
+.patientInput,
+.dateInput,
+.emailInput,
+.phoneInput{
+width:100%;
+padding:12px;
+margin-top:14px;
+border:none;
+border-radius:12px;
+font-family:Poppins;
+}
+
+/* FILE */
+
+.prescriptionFile{
+margin-top:15px;
+width:100%;
+background:white;
+padding:10px;
+border-radius:12px;
+}
+
+/* BUTTON */
+
+.card button{
+width:100%;
+padding:12px;
+margin-top:12px;
+border:none;
+border-radius:14px;
+background:#00c6ff;
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card button:hover{
+background:#0095cc;
+}
+
+/* SLOT */
+
+.slots{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:18px;
+justify-content:center;
+}
+
+.slot{
+padding:10px 14px;
+border-radius:25px;
+background:#00c6ff;
+cursor:pointer;
+font-size:14px;
+}
+
+.slot.disabled{
+background:#777;
+cursor:not-allowed;
+}
+
+/* =========================
+POPUP
+========================= */
+
+#popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:2000;
+padding:20px;
+}
+
+.popup-content{
+background:white;
+color:black;
+width:400px;
+max-width:100%;
+border-radius:30px;
+padding:20px;
+text-align:center;
+position:relative;
+}
+
+.popup-content img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:20px;
+}
+
+.close{
+position:absolute;
+top:12px;
+right:18px;
+font-size:26px;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+padding:40px 20px;
+text-align:center;
+background:rgba(0,0,0,0.2);
+margin-top:80px;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero{
+padding-top:120px;
+flex-direction:column;
+text-align:center;
+}
+
+.hero-left h1{
+font-size:42px;
+}
+
+.hero-left p{
+font-size:16px;
+}
+
+.hero-right img{
+width:100%;
+}
+
+.stats{
+justify-content:center;
+}
+
+#doctorsGrid{
+grid-template-columns:1fr;
+padding:30px 15px;
+}
+
+.card{
+width:100%;
+}
+
+#navbar{
+padding:15px;
+flex-direction:column;
+gap:15px;
+}
+
+.logo{
+font-size:24px;
+}
+
+.extra-section h2{
+font-size:30px;
+}
+
+}
+/* PRESCRIPTION */
+
+.uploadBox{
+display:block;
+margin-top:15px;
+padding:12px;
+background:white;
+color:#333;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+text-align:center;
+}
+
+.uploadBox:hover{
+background:#f2f2f2;
+}
+
+.uploadBox input{
+display:none;
+}
+
+.fileName{
+margin-top:8px;
+font-size:13px;
+font-weight:500;
+word-break:break-word;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg1"></div>
+<div class="bg2"></div>
+
+<!-- NAVBAR -->
+
+<div id="navbar">
+
+<div class="logo">
+🏥 MedSchedule
+</div>
+
+<div class="nav-container">
+
+<button id="themeBtn"
+onclick="toggleTheme()">
+🌙 Mode
+</button>
+
+<div id="nav"></div>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="hero-left">
+
+<h1>
+Premium Healthcare Booking Experience
+</h1>
+
+<p>
+Book appointments with expert doctors instantly.
+Fast, secure, and modern healthcare platform for your family.
+</p>
+
+<div class="hero-buttons">
+
+<button class="btn1"
+onclick="document.querySelector('.filter-section').scrollIntoView({behavior:'smooth'})">
+Book Appointment
+</button>
+
+
+</div>
+
+<div class="stats">
+
+<div class="stat-card">
+<h2>50+</h2>
+<p>Doctors</p>
+</div>
+
+<div class="stat-card">
+<h2>10K+</h2>
+<p>Patients</p>
+</div>
+
+<div class="stat-card">
+<h2>24/7</h2>
+<p>Support</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=1200&auto=format&fit=crop">
+
+<div class="floating-card card1">
+⭐ Trusted by 10K+ Patients
+</div>
+
+<div class="floating-card card2">
+🩺 24/7 Emergency Support
+</div>
+
+</div>
+
+</div>
+
+<!-- EXTRA -->
+
+<div class="extra-section">
+
+<h2>
+Why Patients Trust MedSchedule
+</h2>
+
+<p class="extra-sub">
+Providing world-class healthcare booking experience with trusted doctors and modern technology.
+</p>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<div class="icon">⚡</div>
+<h3>Instant Booking</h3>
+<p>Book appointments instantly.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">👨‍⚕️</div>
+<h3>Expert Doctors</h3>
+<p>Consult experienced specialists.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">🩺</div>
+<h3>24/7 Support</h3>
+<p>Emergency support anytime.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">🔒</div>
+<h3>Secure Platform</h3>
+<p>Your data is secure.</p>
+</div>
+
+</div>
+
+<div class="quote-box">
+
+<h2>
+“Your Health Is Our Highest Priority”
+</h2>
+
+<p>
+Trusted by thousands of patients.
+</p>
+
+</div>
+
+</div>
+
+<!-- FILTER -->
+
+<div class="filter-section">
+
+<div class="filter-box">
+
+<h2>Select Disease / Department</h2>
+
+<select id="diseaseFilter"
+onchange="filterDoctors()">
+
+<option value="">-- Select Disease --</option>
+
+<option value="Cardiologist">Heart</option>
+<option value="Pediatrician">Children</option>
+<option value="General Physician">General</option>
+<option value="Dermatologist">Skin</option>
+<option value="Dentist">Dental</option>
+<option value="Fever Specialist">Fever</option>
+
+</select>
+
+</div>
+
+</div>
+
+<!-- DOCTORS -->
+
+<div id="doctorsGrid"></div>
+
+<!-- POPUP -->
+
+<div id="popup">
+
+<div class="popup-content">
+
+<span class="close"
+onclick="closePopup()">×</span>
+
+<img id="pImg">
+
+<h2 id="pName"></h2>
+
+<p id="pSpec"></p>
+
+<p id="pDesc"></p>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<h2>
+🏥 MedSchedule Pro
+</h2>
+
+<p>
+Making healthcare smarter and easier.
+</p>
+
+</div>
+
+<script>
+
+let allDoctors = [];
+
+/* =========================
+THEME
+========================= */
+
+function toggleTheme(){
+
+document.body.classList.toggle("light-mode");
+
+localStorage.setItem(
+"theme",
+document.body.classList.contains("light-mode")
+? "light"
+: "dark"
+);
+
+}
+
+if(localStorage.getItem("theme")==="light"){
+document.body.classList.add("light-mode");
+}
+
+/* =========================
+NAV
+========================= */
+
+function setupNav(){
+
+const nav =
+document.getElementById("nav");
+
+const token =
+localStorage.getItem("token");
+
+if(token){
+
+const user =
+JSON.parse(
+atob(token.split('.')[1])
+);
+
+nav.innerHTML = `
+
+<div style="
+display:flex;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
+">
+
+<div style="
+background:rgba(255,255,255,0.15);
+padding:10px 16px;
+border-radius:14px;
+font-weight:600;
+">
+👤 ${user.username}
+</div>
+
+<button
+onclick="location='history.html'"
+style="
+padding:10px 18px;
+border:none;
+border-radius:12px;
+background:white;
+font-weight:600;
+cursor:pointer;
+">
+📅 My Appointments
+</button>
+
+
+<button
+onclick="logout()"
+style="
+padding:10px 18px;
+border:none;
+border-radius:12px;
+background:#ff4d6d;
+color:white;
+font-weight:600;
+cursor:pointer;
+">
+Logout
+</button>
+
+</div>
+
+`;
+
+}else{
+
+nav.innerHTML = `
+
+<button
+onclick="location='login.html'"
+style="
+padding:10px 18px;
+border:none;
+border-radius:12px;
+background:#00c6ff;
+color:white;
+font-weight:600;
+cursor:pointer;
+">
+Login
+</button>
+
+`;
+
+}
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+localStorage.removeItem("token");
+
+location.reload();
+
+}
+
+/* =========================
+LOAD DOCTORS
+========================= */
+
+async function loadDoctors(){
+
+const res =
+await fetch(
+"http://localhost:5000/doctors"
+);
+
+allDoctors =
+await res.json();
+
+}
+
+/* =========================
+FILTER
+========================= */
+
+function filterDoctors(){
+
+const disease =
+document.getElementById("diseaseFilter").value;
+
+const grid =
+document.getElementById("doctorsGrid");
+
+grid.innerHTML = "";
+
+if(!disease) return;
+
+const filtered =
+allDoctors.filter(
+d => d.specialization === disease
+);
+
+if(filtered.length===0){
+
+grid.innerHTML=`
+<h2>Doctor not available</h2>
+`;
+
+return;
+
+}
+
+filtered.forEach(d=>{
+
+const div =
+document.createElement("div");
+
+div.className="card";
+
+div.innerHTML=`
+
+<img src="${d.image}">
+
+<h3>${d.name}</h3>
+
+<p>${d.specialization}</p>
+
+<input
+type="text"
+placeholder="Patient Name"
+class="patientInput"
+>
+
+<input
+type="email"
+placeholder="Email"
+class="emailInput"
+>
+
+<input
+type="text"
+placeholder="Phone Number"
+class="phoneInput"
+>
+
+<input
+type="date"
+class="dateInput"
+max="2300-12-31"
+>
+
+
+<div class="slots"></div>
+
+<button onclick="showSlots('${d.name}',this)">
+View Slots
+</button>
+
+<button onclick='openPopup(${JSON.stringify(d)})'>
+View Profile
+</button>
+
+`;
+
+const today =
+new Date().toISOString().split("T")[0];
+
+setTimeout(()=>{
+div.querySelector(".dateInput").min=today;
+},100);
+
+grid.appendChild(div);
+
+});
+
+}
+
+/* =========================
+SHOW SLOTS
+========================= */
+
+async function showSlots(doctor, btn){
+
+const card = btn.parentElement;
+
+const patient = card.querySelector(".patientInput").value;
+const date = card.querySelector(".dateInput").value;
+
+if(!patient){
+alert("Enter patient name");
+return;
+}
+
+if(!date){
+alert("Select date");
+return;
+}
+
+const res = await fetch(
+`http://localhost:5000/appointments/${doctor}/${date}`
+);
+
+const booked = await res.json();
+
+const times = [
+"10:30 AM",
+"12:00 PM",
+"2:30 PM",
+"7:00 PM"
+];
+
+const slotsDiv = card.querySelector(".slots");
+slotsDiv.innerHTML = "";
+
+const today = new Date().toISOString().split("T")[0];
+
+function convertToMinutes(time){
+const [t, meridian] = time.split(" ");
+let [hours, minutes] = t.split(":").map(Number);
+
+if(meridian === "PM" && hours !== 12){
+hours += 12;
+}
+
+if(meridian === "AM" && hours === 12){
+hours = 0;
+}
+
+return hours * 60 + minutes;
+}
+
+const now = new Date();
+const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+times.forEach(t=>{
+
+const slot = document.createElement("div");
+slot.className = "slot";
+slot.innerText = t;
+
+const slotMinutes = convertToMinutes(t);
+
+/* Already booked */
+if(booked.includes(t)){
+slot.classList.add("disabled");
+slot.innerText = t + " Booked";
+}
+
+/* Past slot for today */
+else if(date === today && slotMinutes <= currentMinutes){
+slot.classList.add("disabled");
+slot.innerText = t + " Expired";
+}
+
+/* Available */
+else{
+slot.onclick = ()=>book(
+doctor,
+patient,
+date,
+t,
+slot
+);
+}
+
+slotsDiv.appendChild(slot);
+
+});
+
+}
+
+/* =========================
+BOOK
+========================= */
+
+async function book(
+doctor,
+patient,
+date,
+time,
+btn
+){
+
+const token =
+localStorage.getItem("token");
+
+if(!token){
+
+alert("Login first");
+
+location="login.html";
+
+return;
+
+}
+
+const card =
+btn.closest(".card");
+
+const email =
+card.querySelector(".emailInput").value;
+
+const phone =
+card.querySelector(".phoneInput").value;
+
+try{
+
+const res =
+await fetch(
+"http://localhost:5000/appointments",
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer " + token
+},
+
+body:JSON.stringify({
+name:patient,
+email,
+phone,
+doctor,
+date,
+time
+})
+});
+
+const data =
+await res.json();
+
+if(data.message==="Slot booked"){
+
+alert("Already booked ❌");
+
+}else{
+
+alert("Appointment booked ✅");
+
+btn.classList.add("disabled");
+
+btn.onclick = null;
+
+}
+
+}catch(err){
+
+console.log(err);
+
+alert("Booking failed ❌");
+
+}
+
+}
+
+/* =========================
+POPUP
+========================= */
+
+function openPopup(d){
+
+document.getElementById("popup").style.display="flex";
+
+document.getElementById("pImg").src=d.image;
+
+document.getElementById("pName").innerText=d.name;
+
+document.getElementById("pSpec").innerHTML=`
+<b>${d.specialization}</b><br><br>
+👨‍⚕️ Experience: ${d.experience}<br>
+🎓 Qualification: ${d.qualification}<br>
+🏥 Hospital: ${d.hospital}<br>
+💰 Fee: ${d.fee}
+`;
+
+document.getElementById("pDesc").innerText=d.about;
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+/* INIT */
+function showFileName(input){
+
+const card =
+input.closest(".card");
+
+const fileText =
+card.querySelector(".fileName");
+
+if(input.files.length > 0){
+
+fileText.innerHTML =
+"✅ Selected: " +
+input.files[0].name;
+
+}else{
+
+fileText.innerHTML =
+"No file selected";
+
+}
+
+}
+setupNav();
+loadDoctors();
+
+</script>
+
+</body>
+</html>

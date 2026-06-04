@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Appointments</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+min-height:100vh;
+}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 25px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+}
+
+.nav button{
+padding:10px 16px;
+border:none;
+border-radius:10px;
+background:white;
+cursor:pointer;
+font-weight:600;
+}
+
+#list{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+padding:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:22px;
+border-radius:18px;
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.status{
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
+margin-top:8px;
+background:#00c6ff;
+}
+
+.cancel{
+margin-top:15px;
+background:#ff4d4d;
+padding:10px 14px;
+border:none;
+border-radius:10px;
+color:white;
+cursor:pointer;
+font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+<h3>📅 My Appointments</h3>
+<button onclick="location='index.html'">🏠 Home</button>
+</div>
+
+<div id="list"></div>
+
+<script>
+
+async function load(){
+
+const token = localStorage.getItem("token");
+
+if(!token){
+alert("Login first");
+location="login.html";
+return;
+}
+
+try{
+
+const res = await fetch("http://localhost:5000/appointments/my",{
+headers:{
+"Authorization":"Bearer " + token
+}
+});
+
+const data = await res.json();
+
+const list = document.getElementById("list");
+list.innerHTML = "";
+
+if(!Array.isArray(data) || data.length === 0){
+list.innerHTML = "<p>No appointments</p>";
+return;
+}
+
+data.forEach(a=>{
+
+list.innerHTML += `
+<div class="card">
+<h3>${a.doctor}</h3>
+
+<p><b>Patient:</b> ${a.name || "-"}</p>
+<p><b>Email:</b> ${a.email || "-"}</p>
+<p><b>Phone:</b> ${a.phone || "-"}</p>
+<p>📅 ${a.date}</p>
+<p>⏰ ${a.time}</p>
+
+<span class="status">${a.status || "Pending"}</span>
+
+<br>
+
+<button class="cancel" onclick="cancelAppointment('${a._id}')">
+Cancel ❌
+</button>
+</div>
+`;
+
+});
+
+}catch(err){
+
+console.log(err);
+alert("Failed to load appointments");
+
+}
+
+}
+
+/* CANCEL */
+async function cancelAppointment(id){
+
+const token = localStorage.getItem("token");
+
+if(!confirm("Cancel appointment?")) return;
+
+await fetch(`http://localhost:5000/appointments/${id}`,{
+method:"DELETE",
+headers:{
+"Authorization":"Bearer " + token
+}
+});
+
+alert("Cancelled ✅");
+load();
+
+}
+
+load();
+
+</script>
+
+</body>
+</html>
