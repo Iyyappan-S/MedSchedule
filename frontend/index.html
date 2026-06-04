@@ -954,7 +954,7 @@ async function loadDoctors(){
 
 const res =
 await fetch(
-"http://localhost:5000/doctors"
+"https://medschedule-backend-kwtn.onrender.com/doctors"
 );
 
 allDoctors =
@@ -1080,7 +1080,7 @@ return;
 }
 
 const res = await fetch(
-`http://localhost:5000/appointments/${doctor}/${date}`
+`https://medschedule-backend-kwtn.onrender.com/appointments/${doctor}/${date}`
 );
 
 const booked = await res.json();
@@ -1190,7 +1190,7 @@ try{
 
 const res =
 await fetch(
-"http://localhost:5000/appointments",
+"https://medschedule-backend-kwtn.onrender.com/appointments",
 {
 method:"POST",
 
