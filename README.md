@@ -8,7 +8,7 @@ A modern Full Stack Healthcare Platform built using HTML, CSS, JavaScript, Node.
 
 🌐 **Live Website**
 
-https://medschedule-pro.netlify.app/
+https://medschedulee.netlify.app/
 
 
 
