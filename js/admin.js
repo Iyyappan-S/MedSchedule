@@ -12,7 +12,6 @@ location="login.html";
 
 let appointments = [];
 
-/* LOAD DATA */
 async function load(){
 
 const res = await fetch("http://localhost:5000/appointments");
