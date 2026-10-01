@@ -63,7 +63,6 @@ list.appendChild(row);
 });
 }
 
-/* SEARCH */
 function search(){
 const val = document.getElementById("search").value.toLowerCase();
 
