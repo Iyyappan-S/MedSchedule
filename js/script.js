@@ -51,7 +51,6 @@ grid.appendChild(div);
 });
 }
 
-/* ================= SEARCH ================= */
 function searchDoctor(){
 const val = document.getElementById("search").value.toLowerCase();
 
@@ -63,7 +62,6 @@ d.spec.toLowerCase().includes(val)
 renderDoctors(filtered);
 }
 
-/* ================= BOOK ================= */
 async function book(doctor, btn){
 
 btn.disabled = true;
