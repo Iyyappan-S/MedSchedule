@@ -7,9 +7,6 @@
 
 <style>
 
-/* =========================
-GLOBAL
-========================= */
 
 *{
 margin:0;
@@ -26,7 +23,6 @@ color:white;
 transition:0.4s;
 }
 
-/* LIGHT MODE */
 .light-mode{
 background:#f5f5f5;
 color:#222;
@@ -45,7 +41,6 @@ color:#222;
 background:#fff;
 }
 
-/* BACKGROUND GLOW */
 
 .bg1,.bg2{
 position:fixed;
@@ -70,9 +65,6 @@ bottom:-100px;
 right:-100px;
 }
 
-/* =========================
-NAVBAR
-========================= */
 
 #navbar{
 position:fixed;
@@ -117,9 +109,6 @@ gap:12px;
 flex-wrap:wrap;
 }
 
-/* =========================
-HERO
-========================= */
 
 .hero{
 padding-top:140px;
@@ -182,7 +171,7 @@ color:#333;
 transform:translateY(-4px) scale(1.03);
 }
 
-/* STATS */
+
 
 .stats{
 display:flex;
@@ -210,7 +199,6 @@ font-size:34px;
 margin-bottom:8px;
 }
 
-/* HERO IMAGE */
 
 .hero-right{
 position:relative;
@@ -223,7 +211,6 @@ border-radius:35px;
 box-shadow:0 20px 50px rgba(0,0,0,0.3);
 }
 
-/* FLOATING CARDS */
 
 .floating-card{
 position:absolute;
@@ -246,9 +233,6 @@ bottom:20px;
 right:-40px;
 }
 
-/* =========================
-EXTRA SECTION
-========================= */
 
 .extra-section{
 padding:80px 20px;
@@ -269,7 +253,6 @@ line-height:1.7;
 margin-bottom:50px;
 }
 
-/* FEATURES */
 
 .feature-grid{
 display:grid;
@@ -297,7 +280,6 @@ font-size:50px;
 margin-bottom:15px;
 }
 
-/* QUOTE */
 
 .quote-box{
 margin-top:70px;
@@ -310,7 +292,6 @@ margin-left:auto;
 margin-right:auto;
 }
 
-/* TESTIMONIALS */
 
 .testimonial-section{
 margin-top:80px;
@@ -332,9 +313,7 @@ padding:30px;
 border-radius:25px;
 }
 
-/* =========================
-FILTER
-========================= */
+
 
 .filter-section{
 padding:60px 20px;
@@ -365,9 +344,6 @@ font-family:Poppins;
 outline:none;
 }
 
-/* =========================
-DOCTOR CARDS
-========================= */
 
 #doctorsGrid{
 display:grid;
@@ -408,7 +384,6 @@ margin-top:5px;
 opacity:0.9;
 }
 
-/* INPUTS */
 
 .patientInput,
 .dateInput,
@@ -422,7 +397,6 @@ border-radius:12px;
 font-family:Poppins;
 }
 
-/* FILE */
 
 .prescriptionFile{
 margin-top:15px;
@@ -432,7 +406,6 @@ padding:10px;
 border-radius:12px;
 }
 
-/* BUTTON */
 
 .card button{
 width:100%;
@@ -451,7 +424,6 @@ transition:0.3s;
 background:#0095cc;
 }
 
-/* SLOT */
 
 .slots{
 display:flex;
@@ -474,9 +446,7 @@ background:#777;
 cursor:not-allowed;
 }
 
-/* =========================
-POPUP
-========================= */
+
 
 #popup{
 display:none;
@@ -518,7 +488,6 @@ font-size:26px;
 cursor:pointer;
 }
 
-/* FOOTER */
 
 .footer{
 padding:40px 20px;
@@ -527,9 +496,7 @@ background:rgba(0,0,0,0.2);
 margin-top:80px;
 }
 
-/* =========================
-MOBILE
-========================= */
+
 
 @media(max-width:768px){
 
@@ -579,7 +546,6 @@ font-size:30px;
 }
 
 }
-/* PRESCRIPTION */
 
 .uploadBox{
 display:block;
@@ -616,7 +582,7 @@ color:white;
 <div class="bg1"></div>
 <div class="bg2"></div>
 
-<!-- NAVBAR -->
+
 
 <div id="navbar">
 
@@ -637,7 +603,6 @@ onclick="toggleTheme()">
 
 </div>
 
-<!-- HERO -->
 
 <div class="hero">
 
@@ -699,7 +664,6 @@ Book Appointment
 
 </div>
 
-<!-- EXTRA -->
 
 <div class="extra-section">
 
@@ -753,7 +717,6 @@ Trusted by thousands of patients.
 
 </div>
 
-<!-- FILTER -->
 
 <div class="filter-section">
 
@@ -779,11 +742,9 @@ onchange="filterDoctors()">
 
 </div>
 
-<!-- DOCTORS -->
 
 <div id="doctorsGrid"></div>
 
-<!-- POPUP -->
 
 <div id="popup">
 
@@ -804,7 +765,6 @@ onclick="closePopup()">×</span>
 
 </div>
 
-<!-- FOOTER -->
 
 <div class="footer">
 
@@ -822,9 +782,6 @@ Making healthcare smarter and easier.
 
 let allDoctors = [];
 
-/* =========================
-THEME
-========================= */
 
 function toggleTheme(){
 
@@ -843,9 +800,7 @@ if(localStorage.getItem("theme")==="light"){
 document.body.classList.add("light-mode");
 }
 
-/* =========================
-NAV
-========================= */
+
 
 function setupNav(){
 
@@ -936,7 +891,6 @@ Login
 
 }
 
-/* LOGOUT */
 
 function logout(){
 
@@ -946,9 +900,7 @@ location.reload();
 
 }
 
-/* =========================
-LOAD DOCTORS
-========================= */
+
 
 async function loadDoctors(){
 
@@ -962,9 +914,6 @@ await res.json();
 
 }
 
-/* =========================
-FILTER
-========================= */
 
 function filterDoctors(){
 
@@ -1058,9 +1007,7 @@ grid.appendChild(div);
 
 }
 
-/* =========================
-SHOW SLOTS
-========================= */
+
 
 async function showSlots(doctor, btn){
 
@@ -1123,19 +1070,17 @@ slot.innerText = t;
 
 const slotMinutes = convertToMinutes(t);
 
-/* Already booked */
+
 if(booked.includes(t)){
 slot.classList.add("disabled");
 slot.innerText = t + " Booked";
 }
 
-/* Past slot for today */
 else if(date === today && slotMinutes <= currentMinutes){
 slot.classList.add("disabled");
 slot.innerText = t + " Expired";
 }
 
-/* Available */
 else{
 slot.onclick = ()=>book(
 doctor,
@@ -1152,9 +1097,7 @@ slotsDiv.appendChild(slot);
 
 }
 
-/* =========================
-BOOK
-========================= */
+
 
 async function book(
 doctor,
@@ -1236,9 +1179,7 @@ alert("Booking failed ❌");
 
 }
 
-/* =========================
-POPUP
-========================= */
+
 
 function openPopup(d){
 
@@ -1266,7 +1207,6 @@ document.getElementById("popup").style.display="none";
 
 }
 
-/* INIT */
 function showFileName(input){
 
 const card =
