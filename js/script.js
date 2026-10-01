@@ -16,7 +16,6 @@ image:"https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400"
 }
 ];
 
-/* ================= RENDER ================= */
 function renderDoctors(list = doctors){
 
 const grid = document.getElementById("doctorsGrid");
