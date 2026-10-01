@@ -99,7 +99,6 @@ btn.disabled = false;
 btn.innerText = "Book";
 }
 
-/* ================= CHAT ================= */
 async function send(){
 
 const input = document.getElementById("input");
@@ -125,11 +124,9 @@ input.value = "";
 box.scrollTop = box.scrollHeight;
 }
 
-/* ================= CHAT TOGGLE ================= */
 function toggleChat(){
 const c = document.getElementById("chat");
 c.style.display = c.style.display === "none" ? "block" : "none";
 }
 
-/* ================= INIT ================= */
 renderDoctors();
