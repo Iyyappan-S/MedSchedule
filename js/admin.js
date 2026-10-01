@@ -20,7 +20,7 @@ appointments = await res.json();
 render(appointments);
 }
 
-/* RENDER */
+
 function render(data){
 
 const list = document.getElementById("list");
