@@ -8,7 +8,6 @@ if(!token){
 return res.status(401).json({error:"No token"});
 }
 
-/* supports both token and Bearer token */
 if(token.startsWith("Bearer ")){
 token = token.split(" ")[1];
 }
